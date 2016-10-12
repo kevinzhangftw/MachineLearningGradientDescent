@@ -16,7 +16,6 @@ tol = 0.00001
 eta = 0.5
 
 
-
 # Load data.
 data = np.genfromtxt('data.txt')
 
