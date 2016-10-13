@@ -9,13 +9,15 @@ import assignment2 as a2
 
 def plotErrorall(w):
   for iter in range (0,max_iter):
+    for i in xrange(0,200):
+      y = sps.expit(np.dot(X[i],w))
+      grad_e = np.multiply((y - t[i]), X[i].T)
+      w_old = w
+      w = w - eta*grad_e
     y = sps.expit(np.dot(X,w))
     e = -np.mean(np.multiply(t,np.log(y)) + np.multiply((1-t),np.log(1-y)))
     e_all.append(e)
-    grad_e = np.mean(np.multiply((y - t), X.T), axis=1)
-    w_old = w
-    w = w - eta*grad_e
-    
+   
 def reset(w, e_all):
   w = np.array([0.1, 0, 0])
   del e_all[:]
@@ -32,6 +34,7 @@ class2 = np.where(t==1)
 X2 = X[class2]
 w = np.array([0.1, 0, 0])
 e_all = []
+e_epoch = []
 
 for x in xrange(1,6):
   if x==1:
