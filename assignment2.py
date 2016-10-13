@@ -1,9 +1,6 @@
 """Basic code for assignment 2."""
-
 import numpy as np
 import matplotlib.pyplot as plt
-
-
 
 def draw_sep(w):
     """ Draw a hyperplane w'x
@@ -25,12 +22,9 @@ def draw_sep(w):
 
     plt.plot(np.squeeze(x1),np.squeeze(x2),'r-');
 
-
-
 def plot_mb(w, w_old):
     """ Plot the current separator in slope-intercept space (m-b)
     """
-
     w = np.asarray(w)
     m = -w[0]/w[1]
     b = -w[2]/w[1]

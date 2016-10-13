@@ -7,15 +7,12 @@ import scipy.special as sps
 import matplotlib.pyplot as plt
 import assignment2 as a2
 
-
 # Maximum number of iterations.  Continue until this limit, or when error change is below tol.
 max_iter = 500
 tol = 0.00001
 
 # Step size for gradient descent.
 eta = 0.5
-
-
 
 # Load data.
 data = np.genfromtxt('data.txt')
