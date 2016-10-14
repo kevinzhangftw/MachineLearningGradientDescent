@@ -6,7 +6,7 @@ import numpy as np
 import scipy.special as sps
 import matplotlib.pyplot as plt
 import assignment2 as a2
-
+import pdb
 
 # Maximum number of iterations.  Continue until this limit, or when error change is below tol.
 max_iter = 500
@@ -14,8 +14,6 @@ tol = 0.00001
 
 # Step size for gradient descent.
 eta = 0.5
-
-
 
 # Load data.
 data = np.genfromtxt('data.txt')
@@ -65,7 +63,11 @@ for iter in range (0,max_iter):
 
   # Update w, *subtracting* a step in the error derivative since we're minimizing
   w_old = w
-  w = w - eta*grad_e
+  r = np.diag(y*(1-y))
+  z = np.dot(X, w_old) - np.dot(np.linalg.inv(r), (y-t))
+  inv = np.linalg.inv(np.dot(np.dot(X.T, r), X))
+  w = np.dot(np.dot(np.dot(inv, X.T), r), z)
+  
   
   # Plot current separator and data.  Useful for interactive mode / debugging.
   # plt.figure(DATA_FIG)
